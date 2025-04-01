@@ -21,6 +21,7 @@ variable_name="something"
 #PROBLEM 1--------------------------------------------------------------------
 #The $ allows us to access the contents of a variable to print it.
 echo $variable_name
+echo ""
 #-----------------------------------------------------------------------------
 
 ############
@@ -30,6 +31,7 @@ echo $variable_name
 #PROBLEM 2--------------------------------------------------------------------
 #Using a little formating we can print a message with the variable's contents.
 echo "Here is the value of the variable: $variable_name"
+echo ""
 #-----------------------------------------------------------------------------
 
 ###########
@@ -45,6 +47,7 @@ echo "Here is the value of the variable: $variable_name"
 #PROBLEM 3--------------------------------------------------------------------
 #Using () around the pwd we can just print the current directory.
 echo "I am currently in this directory: $(pwd)"
+echo ""
 #-----------------------------------------------------------------------------
 
 ##########
@@ -59,6 +62,7 @@ someone=name
 #PROBLEM 4--------------------------------------------------------------------
 #Using the ! we can use a pointer to print the correct name with the ${}
 echo "Using the pointer we will print out the name: ${!someone}"
+echo ""
 #-----------------------------------------------------------------------------
 
 # The use of special symbols to manipulate the variables is called shell
@@ -93,7 +97,6 @@ printit(){
 
 printit alice bob
 
-
 # Conditional
 
 # syntax is
@@ -113,6 +116,9 @@ printit alice bob
 
 #CONDITIONAL FUNCTION 1-----------------------------------------------------
 #Print prompt message to instruct user
+
+echo ""
+echo ""
 echo "Conditional test function will see if two inputs provided are equal."
 echo "If they match, then hello will print, otherwise bye"
 
@@ -138,7 +144,11 @@ cond_test(){
 
 #Call the cond_test function
 cond_test
+echo ""
+echo ""
 #-----------------------------------------------------------------------------
+
+
 
 #
 # To check if the strings are equal, use the following command
@@ -163,19 +173,23 @@ cond_test
 #Function will generate two random numbers between 1 and 10. User will then be
 #prompted to enter the sum and a if statement will tell if the user is correct
 #or incorrect
+
+echo "Conditional test function will generate two random numbers and prompt"
+echo "to enter the sum of the numbers."
+
 random_sum() {
 
     #Generate both random numbers that will populate between 1 and 10
-    random1=((RANDOM % 10 + 1))
-    random2=((RANDOM % 10 + 1))
+    random1=$((RANDOM % 10 + 1))
+    random2=$((RANDOM % 10 + 1))
 
     #Print both of the random numbers and prompt the user to enter the sum
-    echo "Random number 1 is $random1. Random number 2 is $random2."
+    echo "First Random number is $random1. Second Random number is $random2."
     echo "What is the sum of both random numbers?"
     read input
 
     #Calculate the sum of the two random numbers
-    random_sum=(($random1 + $random2))
+    random_sum=$(($random1 + $random2))
 
     #If satement that will compare the user input with the calculated sum
     #If the correct sum is entered Correct! will print otherwise Incorrect!
@@ -189,6 +203,8 @@ random_sum() {
 
 #Call the random_sum function
 random_sum
+echo ""
+echo ""
 #-----------------------------------------------------------------------------
 
 ############################
@@ -219,11 +235,11 @@ super_fun_random_sum() {
     do
 
         #Generate two random numbers between 1 and 10
-        random1=((RANDOM % 10 + 1))
-        random2=((RANDOM % 10 + 1))
+        random1=$((RANDOM % 10 + 1))
+        random2=$((RANDOM % 10 + 1))
 
         #Calculate the sum of the two random generate numbers
-        random_sum=(($random1 + $random2))
+        random_sum=$(($random1 + $random2))
 
         #Store the exit code into a variable
         exit_code="exit"
@@ -244,6 +260,7 @@ super_fun_random_sum() {
         then 
             echo "CORRECT!"
         elif [[ $input == $exit_code ]]
+        then
             echo "Exit code entered... exiting loop!"
             break
         else
